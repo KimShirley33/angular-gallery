@@ -1,0 +1,52 @@
+@if (current(); as img) {
+  <div
+    class="lightbox"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="'Imagen ampliada: ' + img.title"
+    (click)="onBackdrop($event)"
+  >
+    <button
+      type="button"
+      class="lightbox__close"
+      aria-label="Cerrar"
+      (click)="close()"
+    >
+      ✕
+    </button>
+
+    <button
+      type="button"
+      class="lightbox__nav lightbox__nav--prev"
+      aria-label="Imagen anterior"
+      (click)="prev()"
+    >
+      ‹
+    </button>
+
+    <figure class="lightbox__figure">
+      <img
+        class="lightbox__img"
+        [class.lightbox__img--loaded]="fullLoaded()"
+        [src]="img.url"
+        [alt]="img.alt"
+        (load)="onFullLoaded()"
+      />
+      <figcaption class="lightbox__caption">
+        <span class="lightbox__title">{{ img.title }}</span>
+        <span class="lightbox__meta">
+          {{ img.category }} · © {{ img.author }} · {{ index() + 1 }}/{{ images().length }}
+        </span>
+      </figcaption>
+    </figure>
+
+    <button
+      type="button"
+      class="lightbox__nav lightbox__nav--next"
+      aria-label="Imagen siguiente"
+      (click)="next()"
+    >
+      ›
+    </button>
+  </div>
+}
