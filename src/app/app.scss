@@ -1,0 +1,27 @@
+.app-header {
+  text-align: center;
+  padding: clamp(2rem, 6vw, 3.5rem) 1rem 1.5rem;
+}
+
+.app-header__title {
+  margin: 0;
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 700;
+  background: linear-gradient(120deg, #4f9dff, #9b7bff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.app-header__subtitle {
+  margin: 0.5rem 0 0;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+}
+
+.app-footer {
+  text-align: center;
+  padding: 2rem 1rem 3rem;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.8rem;
+}
