@@ -1,0 +1,26 @@
+<button
+  type="button"
+  class="card"
+  [attr.aria-label]="'Ampliar imagen: ' + image().title"
+  (click)="onSelect()"
+>
+  <div class="card__media">
+    <img
+      class="card__img"
+      [class.card__img--loaded]="loaded()"
+      [src]="image().thumbnail"
+      [alt]="image().alt"
+      loading="lazy"
+      decoding="async"
+      (load)="onLoaded()"
+    />
+    <span class="card__overlay" aria-hidden="true">
+      <span class="card__zoom">＋</span>
+    </span>
+  </div>
+
+  <figcaption class="card__caption">
+    <span class="card__title">{{ image().title }}</span>
+    <span class="card__category">{{ image().category }}</span>
+  </figcaption>
+</button>

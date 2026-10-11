@@ -1,0 +1,133 @@
+:host {
+  display: block;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  border: none;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--surface, #1b1f27);
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: card-in 0.4s ease both;
+}
+
+.card:hover,
+.card:focus-visible {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
+  outline: none;
+}
+
+.card:focus-visible {
+  outline: 3px solid var(--accent, #4f9dff);
+  outline-offset: 2px;
+}
+
+.card__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 0.5s ease, transform 0.6s ease;
+}
+
+.card__img--loaded {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.card:hover .card__img--loaded {
+  transform: scale(1.08);
+}
+
+.card__overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0));
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.card:hover .card__overlay,
+.card:focus-visible .card__overlay {
+  opacity: 1;
+}
+
+.card__zoom {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: #111;
+  font-size: 1.6rem;
+  font-weight: 700;
+  transform: scale(0.6);
+  transition: transform 0.25s ease;
+}
+
+.card:hover .card__zoom {
+  transform: scale(1);
+}
+
+.card__caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.75rem 0.9rem 0.9rem;
+}
+
+.card__title {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.card__category {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(79, 157, 255, 0.15);
+  color: var(--accent, #4f9dff);
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card__img,
+  .card__overlay,
+  .card__zoom {
+    transition: none;
+    animation: none;
+  }
+}
